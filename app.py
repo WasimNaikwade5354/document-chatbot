@@ -38,6 +38,22 @@ if 'useremail' not in st.session_state:
     st.session_state.useremail = ''
 
 
+if 'doc' not in st.session_state:
+    st.session_state['doc'] = False
+if 'audio_count' not in st.session_state:
+    st.session_state['audio_count'] = 0
+if 'audio_history' not in st.session_state:
+    st.session_state['audio_history'] = {}
+
+
+if "signedout"  not in st.session_state:
+    st.session_state["signedout"] = False
+if 'signout' not in st.session_state:
+    st.session_state['signout'] = False
+# creating a audio checking session state
+if 'is_aud' not in st.session_state:
+    st.session_state['is_aud'] = False    
+    
 
 def f(): 
     try:
@@ -58,22 +74,7 @@ def f():
 def t():
     st.session_state.signout = False
     st.session_state.signedout = False   
-    st.session_state.username = ''
-
-
-    
-
-    
-if "signedout"  not in st.session_state:
-    st.session_state["signedout"] = False
-if 'signout' not in st.session_state:
-    st.session_state['signout'] = False
-# creating a audio checking session state
-if 'is_aud' not in st.session_state:
-    st.session_state['is_aud'] = False    
-    
-
-    
+    st.session_state.username = ''  
 
 if  not st.session_state["signedout"]: # only show if the state is False, hence the button has never been clicked
     choice = st.selectbox('Login/Signup',['Login','Sign up'])
@@ -99,12 +100,6 @@ if  not st.session_state["signedout"]: # only show if the state is False, hence 
     
     
 ##############################################PDF ChatBot###################################################
-
-def get_duration_librosa(file_path):
-   audio_data, sample_rate = librosa.load(file_path)
-   duration = librosa.get_duration(y=audio_data, sr=sample_rate)
-   return duration
-
 
 def text_to_speech(text):
     """
@@ -155,14 +150,6 @@ def get_conversation_chain(vectorstore):
     )
     return conversation_chain
 
-if 'doc' not in st.session_state:
-    st.session_state['doc'] = False
-
-if 'audio_count' not in st.session_state:
-    st.session_state['audio_count'] = 0
-
-if 'audio_history' not in st.session_state:
-    st.session_state['audio_history'] = {}
 
 # audio_history = {}
 def handle_userinput(user_question):
