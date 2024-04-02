@@ -18,7 +18,7 @@ from firebase_admin import auth
 from st_audiorec import st_audiorec
 import speech_recognition as sr
 
-GENAI_API_KEY = "AIzaSyCbRM1raXsjteH45M92e49YvmBTkcTN1M0"
+GENAI_API_KEY = "YOUR API KEY"
 os.environ["GOOGLE_API_KEY"] = GENAI_API_KEY
 
 genai.configure(api_key=GENAI_API_KEY)
